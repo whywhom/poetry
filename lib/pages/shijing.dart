@@ -35,7 +35,7 @@ class _ShijingState extends State<ShijingWidget> {
   }
 
   Future<Shijing> readJson() async {
-    final String response = await rootBundle.loadString('files/shijing/shijing.json');
+    final String response = await rootBundle.loadString('assets/files/shijing/shijing.json');
     final data = await json.decode(response);
     return Shijing.fromJson(data);
   }
@@ -63,8 +63,8 @@ class _ShijingState extends State<ShijingWidget> {
           width: MediaQuery.of(context).size.width,
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('images/bk.jpg'),
-              fit: BoxFit.contain, // 完全填充
+              image: AssetImage('assets/images/bk.jpg'),
+              fit: BoxFit.fitWidth, // 完全填充
             ),
           ),
           child: FutureBuilder<Shijing>(

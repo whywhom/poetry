@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mammoth.chinese.poetry.chinese_poetry">
+    package="com.mammoth.poetry.poetry">
    <application
-        android:label="chinese_poetry"
+        android:label="poetry"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

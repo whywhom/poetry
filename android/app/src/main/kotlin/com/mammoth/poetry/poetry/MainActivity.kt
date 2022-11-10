@@ -1,4 +1,4 @@
-package com.mammoth.chinese.poetry.chinese_poetry
+package com.mammoth.poetry.poetry
 
 import io.flutter.embedding.android.FlutterActivity
 

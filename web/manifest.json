@@ -1,6 +1,6 @@
 {
-    "name": "chinese_poetry",
-    "short_name": "chinese_poetry",
+    "name": "poetry",
+    "short_name": "poetry",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

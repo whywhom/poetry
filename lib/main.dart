@@ -1,9 +1,6 @@
-import 'dart:convert';
-
-import 'package:chinese_poetry/pages/shijing.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'model/shijing.dart';
+import 'package:poetry/pages/shijing.dart';
+
 void main() {
   runApp(const MyApp());
 }
