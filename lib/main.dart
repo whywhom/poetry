@@ -1,17 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:poetry/pages/shijing.dart';
+import 'package:poetry/pages/category.dart';
+import 'package:poetry/router/router_delegate.dart';
+import 'package:poetry/router/router_parser.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
+  final delegate = PoetryRouteDelegate(
+    onGenerateRoute: (RouteSettings settings) {
+      return MaterialPageRoute(
+        settings: settings,
+        builder: (BuildContext context) {
+          return MyHomePage(title: 'Route: ${settings.name}');
+        },
+      );
+    },
+  );
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -25,7 +37,8 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      routeInformationParser: PoetryRouteParser(),
+      routerDelegate: delegate
     );
   }
 }
@@ -64,10 +77,10 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      body: Container(
+      body: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          child: const ShijingWidget(title: '诗经'),
+          child: const CategoryWidget(title:"目录"),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed:()=>{},

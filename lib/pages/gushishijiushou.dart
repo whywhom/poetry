@@ -2,12 +2,13 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:poetry/model/gushishijiushou.dart';
 
 import '../model/shijing.dart';
 import '../widgets/list_item.dart';
 
-class ShijingWidget extends StatefulWidget {
-  const ShijingWidget({super.key, required this.title});
+class GushiShijiushouWidget extends StatefulWidget {
+  const GushiShijiushouWidget({super.key, required this.title});
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -21,23 +22,23 @@ class ShijingWidget extends StatefulWidget {
   final String title;
 
   @override
-  State<ShijingWidget> createState() => _ShijingState();
+  State<GushiShijiushouWidget> createState() => _GushiShijiushouState();
 }
 
-class _ShijingState extends State<ShijingWidget> {
+class _GushiShijiushouState extends State<GushiShijiushouWidget> {
 
-  late Future<Shijing> shijing;
+  late Future<GushiShijiushou> gushishijiushou;
 
   @override
   void initState() {
     super.initState();
-    shijing = readJson();
+    gushishijiushou = readJson();
   }
 
-  Future<Shijing> readJson() async {
-    final String response = await rootBundle.loadString('assets/files/shijing/shijing.json');
+  Future<GushiShijiushou> readJson() async {
+    final String response = await rootBundle.loadString('assets/files/gushishijiushou/gushishijiushou.json');
     final data = await json.decode(response);
-    return Shijing.fromJson(data);
+    return GushiShijiushou.fromJson(data);
   }
 
   @override
@@ -67,14 +68,14 @@ class _ShijingState extends State<ShijingWidget> {
               fit: BoxFit.fitWidth, // 完全填充
             ),
           ),
-          child: FutureBuilder<Shijing>(
-            future: shijing,
+          child: FutureBuilder<GushiShijiushou>(
+            future: gushishijiushou,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return ListView.builder(
                   itemCount: snapshot.data!.items.length,
                   prototypeItem: const ListTile(
-                    title: Text("shi jing"),
+                    title: Text("古诗十九首"),
                   ),
                   itemBuilder: (context, index) {
                     return CardItemWidget(
@@ -90,6 +91,7 @@ class _ShijingState extends State<ShijingWidget> {
             },
           ),
         ),
+
       ),
     );
   }
